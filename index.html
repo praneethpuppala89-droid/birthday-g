@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday ma❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffd1dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+      color: white;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      width: 100%;
+      padding: 35px 25px;
+      text-align: center;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      animation: fadeIn 1.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .heart {
+      font-size: 50px;
+      margin-bottom: 15px;
+      animation: beat 1.2s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      margin-bottom: 20px;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    p {
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      line-height: 1.8;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+      margin-top: 28px;
+      padding: 13px 26px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #ff4f8b;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 24px;
+      animation: floatUp 6s linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 28px 20px;
+      }
+
+      .heart {
+        font-size: 42px;
+      }
+
+      p {
+        line-height: 1.7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heart">❤️</div>
+    <h1>Happy Birthday Ma</h1>
+    <p>
+      Many more happy returns of the day to my special girl ❤️ I really wish I could be there with you to celebrate your special day and make it even more memorable. I hope today brings you lots of happiness, love, and beautiful memories that keep you smiling all day long. You deserve all the care, joy, and good things in the world, not just today but always. No matter what happens, I’ll always be here for you and support you in every way I can. Seeing you happy makes me happy too. Enjoy your special day ma, love you ❤️
+
+    </p>
+    <button onclick="moreConfetti()">Tap for Love 🎉</button>
+  </div>
+
+  <script>
+    const colors = ["#ffffff", "#ff4f8b", "#ffd700", "#ffb6c1", "#cdb4db", "#bde0fe", "#ff758c"];
+
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.animationDuration = Math.random() * 3 + 3 + "s";
+      confetti.style.width = Math.random() * 8 + 6 + "px";
+      confetti.style.height = Math.random() * 8 + 6 + "px";
+      confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "3px";
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 6000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    function moreConfetti() {
+      for (let i = 0; i < 70; i++) {
+        setTimeout(createConfetti, i * 20);
+      }
+    }
+
+    setInterval(createConfetti, 130);
+    setInterval(createHeart, 900);
+  </script>
+</body>
+</html>
